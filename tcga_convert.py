@@ -17,8 +17,6 @@ def prepare_files(project):
 	# Print the list of files
 	tumor_count = 0
 	norm_count = 0
-	with open('Check.txt','w') as texto:
-		texto.write('Folder,File')
 	for file in files:
 		if '.txt' not in file:
 			if clin_data[file] == 'Normal':
@@ -49,7 +47,17 @@ def prepare_counts(project):
 					linha = line.split()
 					data_dic[linha[1]] = linha[4]
 		with open(project+'/'+file+'.tabular','w') as texto:
-			texto.write('Gene,Counts')
 			for key, value in data_dic.items():
-				texto.write(f'\n{key},{value}')	
-			
+				texto.write(f'\n{key}	{value}')	
+
+#def count_genes(project):
+#	data_dic = {}
+#	files = [x for x in os.listdir(project + '/') if '.tabular' in x]
+#	for file in files:
+#		data_dic[file] = {}
+#		with open(project+'/'+file,'r') as texto:
+#			for line in texto:
+#				linha=line.replace(',',' ').split()
+#				data_dic[file][linha[0]] = linha[1]
+#	for key in data_dic.keys():
+#		print(len(data_dic[key].keys()))					
