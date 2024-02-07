@@ -46,7 +46,7 @@ def prepare_counts(project):
 				if 'protein_coding' in line:
 					linha = line.split()
 					data_dic[linha[1]] = linha[4]
-		with open(project+'/'+file+'.tabular','w') as texto:
+		with open('output/'+project+'/'+file+'.tabular','w') as texto:
 			for key, value in data_dic.items():
 				texto.write(f'\n{key}	{value}')	
 
